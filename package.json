@@ -1,0 +1,13 @@
+{
+    "name": "jetty-cometd",
+    "version": "0.0.0",
+    "description": "A cometd plugin for ringo/webapp",
+    "keywords": ["cometd", "ringo"],
+    "author": "Hannes Wallnöfer (http://henso.com/) <hannes@helma.at>",
+    "jars": [
+        "jars/cometd-server-6.1.22.jar",
+        "jars/cometd-api-1.0.0rc0.jar",
+        "jars/jetty-util5-6.1.22.jar"
+    ],
+    "lib": ["lib"],
+}
