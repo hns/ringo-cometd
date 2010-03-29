@@ -1,6 +1,6 @@
 /**
  * Dual licensed under the Apache License 2.0 and the MIT license.
- * $Revision: 706 $ $Date: 2009-07-22 22:42:51 +1000 (Wed, 22 Jul 2009) $
+ * $Revision: 757 $ $Date: 2009-09-30 16:14:51 +0200 (Wed, 30 Sep 2009) $
  */
 
 if (typeof dojo != "undefined")
@@ -129,7 +129,7 @@ org.cometd.TimeSyncExtension = function(configuration)
                 l: _lag,
                 o: _offset
             };
-            _debug('TimeSyncExtension: client sending timesync: {}', org.cometd.JSON.toJSON(message.ext.timesync));
+            _debug('TimeSyncExtension: client sending timesync', org.cometd.JSON.toJSON(message.ext.timesync));
         }
         return message;
     };
