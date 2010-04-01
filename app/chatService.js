@@ -13,17 +13,16 @@ function handleMembership(clientId, data) {
         members = rooms[data.room] = {};
     }
     members[data.user] = clientId;
+    function broadcastMembers() {
+        publish("/chat/members", service.getId(), Object.keys(members));
+    }
     addListener("removed", function(id) {
         for (var i in members) {
             if (members[i] == id) delete members[i];
         }
-        broadcastMembers(members);
+        broadcastMembers();
     }, clientId);
-    broadcastMembers(members);
-}
-
-function broadcastMembers(members) {
-    publish("/chat/members", service.getId(), Object.keys(members));
+    broadcastMembers();
 }
 
 function privateChat(clientId, data) {
