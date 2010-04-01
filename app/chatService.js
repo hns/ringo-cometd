@@ -1,39 +1,35 @@
-var {getBayeux, BayeuxService} = require("ringo/cometd");
+var {addListener, publish, send, BayeuxService} = require("ringo/cometd");
 
 export("serverStarted");
 
 module.shared = true;
 
-var bayeux;
 var service;
 var rooms = {};
 
-function handleMembership(client, data) {
+function handleMembership(clientId, data) {
     var members = rooms[data.room];
     if (!members) {
         members = rooms[data.room] = {};
     }
-    members[data.user] = client.getId();
-    client.addListener("removed", function(id) {
+    members[data.user] = clientId;
+    addListener("removed", function(id) {
         for (var i in members) {
             if (members[i] == id) delete members[i];
         }
         broadcastMembers(members);
-    });
+    }, clientId);
     broadcastMembers(members);
 }
 
 function broadcastMembers(members) {
-    var channel = bayeux.getChannel("/chat/members");
-    if (channel) {
-        channel.publish(service.getClient(), Object.keys(members), null);
-    }
+    publish("/chat/members", service.getId(), Object.keys(members));
 }
 
-function privateChat(client, data) {
+function privateChat(clientId, data) {
     var members = rooms[data.room];
     var peers = data.peer.split(",").map(function(name) {
-        return bayeux.getClient(members[name]);
+        return members[name];
     });
     var message = {
         chat: data.chat,
@@ -42,17 +38,17 @@ function privateChat(client, data) {
     };
     peers.forEach(function(peer) {
         if (peer) {
-            peer.deliver(client, data.room, message)
+            send(clientId, peer, data.room, message)
         }
-    })
+    });
+    send(clientId, clientId, data.room, message);
 }
 
 function serverStarted(server) {
-    bayeux = getBayeux();
     service = new BayeuxService("chat");
     service.subscribe("/service/members", handleMembership);
     service.subscribe("/service/privatechat", privateChat);
-    /* getBayeux().addListener("channelAdded", function(c) {
+    /* addListener("channelAdded", function(c) {
         print(" *********** CHANNEL ADDED: " + c);
     }); */
 }
