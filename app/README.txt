@@ -1,4 +1,4 @@
-This is a minimal RingoJS application. To run it launch ringo
+This is a RingoJS web application. To run it launch ringo
 with the main script:
 
   ringo main.js

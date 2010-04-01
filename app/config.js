@@ -23,3 +23,8 @@ exports.macros = [
 
 exports.charset = 'UTF-8';
 exports.contentType = 'text/html';
+
+exports.extensions = [
+    'ringo/cometd',
+    'chatService'
+];

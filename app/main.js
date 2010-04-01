@@ -4,4 +4,5 @@
 
 if (require.main == module) {
     require("ringo/webapp").main(module.directory);
+    require("ringo/shell").start();
 }

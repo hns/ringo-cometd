@@ -159,7 +159,7 @@
          * This function is called when a message arrives on channel /chat/members
          */
         this.members = function(message)
-        {
+        {   console.info("MEMBER MSG RECEIVED: " + message.data);
             var list = '';
             $.each(message.data, function()
             {
