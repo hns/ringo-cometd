@@ -1,6 +1,6 @@
 {
     "name": "ringo-cometd",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "A cometd plugin for ringo/webapp",
     "keywords": ["cometd", "ringo"],
     "author": "Hannes Wallnöfer (http://henso.com/) <hannes@helma.at>",
