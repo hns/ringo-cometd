@@ -1,6 +1,6 @@
 /**
  * Dual licensed under the Apache License 2.0 and the MIT license.
- * $Revision$ $Date: 2009-11-18 11:26:09 +0100 (Wed, 18 Nov 2009) $
+ * $Revision$ $Date: 2009-12-11 12:19:36 +0100 (Fri, 11 Dec 2009) $
  */
 (function($)
 {
@@ -34,7 +34,7 @@
             return $.ajax({
                 url: packet.url,
                 type: 'POST',
-                contentType: 'application/json',
+                contentType: 'application/json;charset=UTF-8',
                 data: packet.body,
                 beforeSend: function(xhr)
                 {

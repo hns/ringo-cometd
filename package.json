@@ -5,7 +5,7 @@
     "keywords": ["cometd", "ringo"],
     "author": "Hannes Wallnöfer (http://henso.com/) <hannes@helma.at>",
     "jars": [
-        "jars/cometd-java-server-1.0.0.jar",
-        "jars/cometd-api-1.0.0.jar"
+        "jars/cometd-java-server-1.0.1.jar",
+        "jars/cometd-api-1.0.1.jar"
     ]
 }
