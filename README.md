@@ -4,6 +4,9 @@ This is a [CometD] Bayeux extension for the RingoJS webapp framework.
 
 [CometD]: http://cometdproject.dojotoolkit.org/
 
+**Note:** because of recent changes in ringo/httpserver, this package
+requires a very recent git snapshot and will not run in Ringo 0.5.
+
 To install run the following command:
 
     ringo-admin install hns/ringo-cometd
